@@ -19,26 +19,25 @@ class HomePage extends StatelessWidget {
     showDialog(context: context,
       builder: (builder){
        return AlertDialog(
-         title: const Text('Choose Your Language'),
+         title: const Text('Choose Your Language', style: TextStyle(color: Colors.black , fontSize: 18, fontWeight: FontWeight.w700),),
          content: Container(
            width: double.maxFinite,
            child: ListView.separated(
              shrinkWrap: true,
+             itemCount: locale.length,
+             separatorBuilder: (context,index){
+               return const Divider(color: Colors.blue,);
+             },
              itemBuilder: (context,index){
                return Padding(
                  padding: const EdgeInsets.all(8.0),
-                 child: GestureDetector(child: Text(locale[index]['name']),
+                 child: GestureDetector(child: Text(locale[index]['name'], style: const TextStyle(color: Colors.black ,fontSize: 16),),
                    onTap: () {
-                     print(locale[index]['name']);
                      updateLanguage(locale[index]['locale']);
                    },
                  ),
                );
              },
-             separatorBuilder: (context,index){
-               return const Divider(color: Colors.blue,);
-             },
-             itemCount: locale.length
            ),
          ),
        );
